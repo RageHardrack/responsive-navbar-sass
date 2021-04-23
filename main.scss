@@ -1,0 +1,123 @@
+$primary: #2b4162;
+$gold: #d4af37;
+$light: #e0ddcf;
+$dark: #322a26;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "fira sans", sans-serif;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: $dark;
+    padding: 16px 32px;
+    border-bottom: 3px solid $gold;
+}
+
+h1 {
+    color: $light;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    z-index: 1;
+
+    user-select: none;
+
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+
+        background-color: $light;
+        border-radius: 6px;
+        z-index: 1;
+
+        transform-origin: 0 0;
+
+        transition: 0.4s;
+    }
+
+    &:hover span:nth-child(2) {
+        transform: translateX(10px);
+        background-color: $gold;
+    }
+
+    &.is-active span:nth-child(1) {
+        transform: translate(0px, -2px) rotate(45deg);
+    }
+
+    &.is-active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+
+    &.is-active span:nth-child(3) {
+        transform: translate(-3px, 3px) rotate(-45deg);
+    }
+
+    &.is-active:hover span {
+        background-color: $gold;
+    }
+}
+
+.menu {
+    display: none;
+    flex: 1 1 0%;
+    justify-content: flex-end;
+    margin: 0 -16px;
+
+    a {
+        color: $light;
+        margin: 0 16px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.4s;
+        padding: 8px 16px;
+        border-radius: 99px;
+
+        &.is-active,
+        &:hover {
+            background-color: $primary;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+    }
+}
